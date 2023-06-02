@@ -1,19 +1,24 @@
-import React from 'react';
-import TodoItem from './TodoItem';
+import React, { useState } from 'react';
+//import components
+import Todo from './Todo';
 
-const TodoList = ({ todos, onDelete, onToggle }) => {
-  return (
-    <div className="todo-list">
-      {todos.map((todo) => (
-        <TodoItem
-          key={todo.id}
-          todo={todo}
-          onDelete={onDelete}
-          onToggle={onToggle}
-        />
-      ))}
-    </div>
-  );
+
+const TodoList = ({todos, setTodos}) =>{
+  
+    return(
+        <div className="todo-container">
+        <ul className="todo-list">
+            {todos.map(todo => (
+              <Todo 
+              setTodos={setTodos} 
+              todos={todos} 
+              key={todo.id}
+              todo={todo} 
+              text={todo.text} />
+            ))}
+          </ul>
+      </div>
+    );
 };
 
 export default TodoList;
